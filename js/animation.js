@@ -1,8 +1,17 @@
+// This file manages the functions and scripts required to animate the carousel.
+
+
+//Definition of variables
+
 let arrows_right = document.getElementsByClassName("arrow right");
 let arrows_left = document.getElementsByClassName("arrow left");
 let movies_lists = document.getElementsByClassName("movies_list");
 let positions = [0, 0, 0, 0];
 let desktop = window.matchMedia("(min-width: 40em)");
+
+
+// This script allows to modify the value of the style translate of the carousel when the arrows are clicked.
+// The modification of translate will trigger the CSS animation.
 
 for (let i = 0; i <= 3; i++) {
 
@@ -29,6 +38,9 @@ for (let i = 0; i <= 3; i++) {
     }
 }
 
+
+// This function hide or show the arrow depending on the position of the carousel
+
 function setArrowVisibility(position, arrow_left, arrow_right) {
     if (position === 0) {
         arrow_left.style.visibility = "hidden"
@@ -41,6 +53,9 @@ function setArrowVisibility(position, arrow_left, arrow_right) {
         arrow_right.style.visibility = "visible" 
     }
 }
+
+
+// This function defines the minimmum position of the carousel depending on the media on which the site is displayed
 
 function minPosition() {
     let minPosition;

@@ -1,21 +1,7 @@
-// Exécute un appel AJAX GET
-// Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès
-function ajaxGet(url, callback) {
-    var req = new XMLHttpRequest();
-    req.open("GET", url);
-    req.addEventListener("load", function () {
-        if (req.status >= 200 && req.status < 400) {
-            // Appelle la fonction callback en lui passant la réponse de la requête
-            callback(req.responseText);
-        } else {
-            console.error(req.status + " " + req.statusText + " " + url);
-        }
-    });
-    req.addEventListener("error", function () {
-        console.error("Erreur réseau avec l'URL " + url);
-    });
-    req.send(null);
-}
+// This file manages the function required to call the API.
+
+
+// This function is used to make an ajax call to the API. It returns a json object.
 
 function fetchAndDecode(url) {
     return fetch(url)
@@ -23,11 +9,7 @@ function fetchAndDecode(url) {
         if(!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         } else {
-            if(response.headers.get("content-type") === 'application/json') {
             return response.json();
-            } else if(response.headers.get("content-type") === 'image/jpeg') {
-            return response.blob();
-            }
         }
     })
     .catch(e => {

@@ -1,5 +1,5 @@
 html {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     background-color: #ffffff;
 }
 
@@ -11,7 +11,7 @@ body {
   min-height: 100vh;
   max-width: 800px;
   width: 100%;
-  gap: 2em;
+  gap: 1.5em;
   margin: auto;
 }
 
@@ -20,22 +20,33 @@ body {
 header {
   background-color: #6D7E8C;
   display: grid;
-  padding: 1.5em;
+  grid-template-areas:
+  'heading logo'
+  'nav logo'
+  ;
+  grid-template-columns: 1fr auto;
+  padding: 2em;
   gap: 1em;
-  
 }
 
 @media (min-width: 40em) {
   header {
-    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    'heading nav logo'
+    ;
+    grid-template-columns: 2fr 1fr auto;
   }
 }
+
+header .heading {grid-area: heading; }
+header .menu {grid-area: nav; }
+header .logo {grid-area: logo; }
+
 
 .heading {
   display: grid;
   align-content: center;
 }
-
 
 .heading h2 {
   color: #ffffff;
@@ -50,6 +61,7 @@ nav {
 nav ul {
   padding: 0;
   margin: 0;
+  white-space: nowrap;
 }
 
 nav ul li {
@@ -75,10 +87,19 @@ nav ul li a:hover {
   color: rgb(66, 66, 66);
 }
 
+.logo {
+  display: grid;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 6em;
+  filter: invert(100%)
+}
 
 /* defining section */
 
-section{
+section {
   visibility: hidden;
   display: grid;
   grid-template-areas:
@@ -114,9 +135,16 @@ section .summary {grid-area: summary; }
   padding: 1em;
   margin-left: 1em;
   margin-right: 1em;
-  border: solid 3px black;
-  border-radius: 10px;
+  border: solid 0.2em black;
 }
+
+@media (min-width: 800px) {
+  .highlight {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 
 .highlight .title {
   text-align: center;
@@ -127,18 +155,36 @@ section .summary {grid-area: summary; }
 }
 
 .highlight .button button{
-  border: 0;
+  border: 2px solid red;
   border-radius: 10px;
   background-color: red;
   color: white;
+  font-size: 1.05em;
   padding: 0.3em 1em 0.3em 1em;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  outline: none;
 }
 
+.highlight .button button:hover {
+    background-color: white; /* Green */
+    color: black;
+}
+
+.highlight .image {
+  text-align: center;
+}
 
 .highlight .image img {
   width: 100%;
+  max-width: 250px;
 }
 
+@media (min-width: 40em) {
+  .highlight .summary {
+    padding-right: 1em;
+  }
+}
 
 /* defining main */
 
@@ -151,6 +197,7 @@ section .summary {grid-area: summary; }
 
 .movies h2 {
   text-align: center;
+  margin-top: 0;
 }
 
 
@@ -174,12 +221,14 @@ section .summary {grid-area: summary; }
 
 .movies_list_container {
   overflow: hidden;
+  padding: 1.5em 0.5em 1.5em 0.5em;
 }
 
 .movies_list {
   display: grid;
+  align-content: center;
   width: 700%;
-  gap: 10px;
+  gap: 1em;
   grid-template-columns: repeat(7, auto);
 }
 
@@ -190,22 +239,34 @@ section .summary {grid-area: summary; }
   }
 }
 
+.movie_picture {
+  text-align: center;
+}
+
 .movie_picture img {
   width: 100%;
+  max-width: 250px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.movie_picture img:hover {
+  transform: scale(1.1);
 }
 
 .arrow img {
   align-self: center;
   width: 30px;
+  cursor: pointer;
+  transition-duration: 0.4s;
 }
 
 .arrow.left {
   visibility: hidden;
 }
 
-.arrow.right img {
-  width: 30px;
-  transform: rotate(180deg);
+.arrow img:hover {
+  transform: scale(1.15);
 }
 
 .movies_list {
@@ -242,7 +303,8 @@ section .summary {grid-area: summary; }
   'summary'
   ;
   gap: 10px;
-  margin: 10px;
+  margin: auto;
+  max-width: 800px;
 }
 
 @media (min-width: 40em) {
@@ -256,9 +318,9 @@ section .summary {grid-area: summary; }
     'summary summary'
     ;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto  auto auto auto 1fr auto;
   }
 }
-
 
 #cross {grid-area: cross; }
 #title {grid-area: title; }
@@ -280,6 +342,8 @@ section .summary {grid-area: summary; }
   border-radius: 5px;
   border: solid black 2px;
   background: white;
+  cursor: pointer;
+  transition-duration: 0.4s;
 }
 
 #cross img:hover {
@@ -312,6 +376,8 @@ section .summary {grid-area: summary; }
 
 #cast li {
   list-style: none;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 #ratings ul {
@@ -320,10 +386,24 @@ section .summary {grid-area: summary; }
 
 #ratings li {
   list-style: none;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 #modal_image {
-  display: grid;
   text-align: center;
-  align-content: center;
+}
+
+#modal_image img {
+  width: 100%;
+  max-width: 250px;
+}
+
+/* defining footer */
+
+footer {
+  border-top: 1px solid #6D7E8C;
+  text-align: center;
+  font-size: 0.7em;
+  color:#6D7E8C;
 }

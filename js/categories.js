@@ -1,3 +1,7 @@
+// This file manages the function and script required to display infomations of the best movies 
+//of the selected categories
+
+
 //Definition of variables
 
 let categories = ["", "drama", "comedy", "horror"];
@@ -5,7 +9,7 @@ let categories_urls = get_categories_urls(categories, 2);
 let movies_articles = document.querySelectorAll(".movies");
 
 
-// get movies data and populate the DOM
+// This script call the functions to retrieve the movies data and populate the DOM for each category
 
 for (let i = 0; i <=3; i++) {
 
@@ -26,7 +30,8 @@ for (let i = 0; i <=3; i++) {
     });
 }
 
-// This functions returns an url that is used to get data from the API
+
+// This functions returns an url that is used to get a category data from the API
 
 function get_category_urls(category, nb_of_pages) {
     let urls = [];
@@ -37,7 +42,8 @@ function get_category_urls(category, nb_of_pages) {
     return urls;
 };
 
-// This function return a list of urls based from a list of categories
+
+// This function return a list of urls from a list of categories
 
 function get_categories_urls(categories, nb_of_pages) {
     urls = [];
@@ -48,7 +54,7 @@ function get_categories_urls(categories, nb_of_pages) {
 }
 
 
-// This function return a list of urls based from a list of categories
+// This function retrieves the list of movies based on the API request urls.
 
 function getMovies(movies_urls, movie_article) {
     movies_promises = []
@@ -62,6 +68,9 @@ function getMovies(movies_urls, movie_article) {
 };
 
 
+// This function updates the DOM to display the movie images in the carousels.
+// Once all the data are loaded, the block is displayed to the screen.
+
 function displayMovies(movies, movie_article) {
     article = movie_article;
     let i = 0;
@@ -73,6 +82,8 @@ function displayMovies(movies, movie_article) {
     movie_article.style.visibility = "visible";
 };
 
+
+// This function sets the call of the modal window if a movie picture is clicked.
 
 function setModal(movies) {
     let i = 0;

@@ -1,3 +1,8 @@
+// This file manages the functions required to display modal window and associated movie information
+
+
+// This function populate the DOM with the movie informations, the displays the modal window
+
 function displayModal(movie) {
     let modal = document.getElementById("myModal");
     
@@ -10,7 +15,7 @@ function displayModal(movie) {
     document.querySelectorAll("#movie_parameters ul li")[0].textContent = turnArrayToString(movie.genres);
     document.querySelectorAll("#movie_parameters ul li")[1].textContent = turnArrayToString(movie.countries);
     document.querySelectorAll("#movie_parameters ul li")[2].textContent = `${movie.duration} min`;
-    document.querySelectorAll("#movie_parameters ul li")[3].textContent = movie.date_published;
+    document.querySelectorAll("#movie_parameters ul li")[3].textContent = formatDate(movie.date_published);
 
     document.querySelector("#summary p").textContent = movie.long_description;
 
@@ -31,6 +36,8 @@ function displayModal(movie) {
 };
 
 
+// This function turns an array into a string, each element separated by a coma and a space.
+
 function turnArrayToString(array) {
     string = "";
     for (item of array) {
@@ -41,4 +48,14 @@ function turnArrayToString(array) {
         }
     }
     return string;
+}
+
+// This function changes the format of the date from US to FR.
+
+function formatDate(date) {
+    let year = date.slice(0, 4);
+    let month = date.slice(5, 7);
+    let day = date.slice(8, 10);
+    new_date = day + "/" + month + "/" + year;
+    return new_date
 }

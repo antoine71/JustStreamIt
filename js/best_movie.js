@@ -1,3 +1,6 @@
+// This file manages the function and script required to display infomations of the best movie
+
+
 // Definition of the API request url.
 
 let best_movies_url = `http://localhost:8000/api/v1/titles/?format=json&sort_by=-imdb_score`
