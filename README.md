@@ -2,11 +2,11 @@
 Openclassrooms - Parcours développement Python Projet 6
 
 ## Status
-This project is under development.
+This project ready for evaluation.
 
 ## Description
 This program is a website written in pure HTML, CSS and Javascript, without any framework.
-This website allows to visualise the most interresting movies of the OC MOvies Database.
+This website allows to visualise the most interesting movies of the OC MOvies Database.
 
 ## How to Clone
 Download the repository to your computer in a location of your choice.
