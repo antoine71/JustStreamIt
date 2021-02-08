@@ -221,7 +221,7 @@ section .summary {grid-area: summary; }
 
 .movies_list_container {
   overflow: hidden;
-  padding: 1.5em 0.5em 1.5em 0.5em;
+  padding: 1.5em 0.1em 1.5em 0.1em;
 }
 
 .movies_list {
@@ -305,6 +305,7 @@ section .summary {grid-area: summary; }
   gap: 10px;
   margin: auto;
   max-width: 800px;
+  padding: 1em;
 }
 
 @media (min-width: 40em) {

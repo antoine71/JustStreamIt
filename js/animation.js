@@ -21,21 +21,29 @@ for (let i = 0; i <= 3; i++) {
     let position = positions[i];
     
     arrow_right.onclick = function() {
-        
         position = Math.max(minPosition(), position - 1);
+        positions[i] = position
         setArrowVisibility(position, arrow_left, arrow_right);
         var translate = "translate(" + (1 / 7) * 100 * position + "%)"
         movies_list.style.transform = translate;
-        console.log("right");
     }
 
     arrow_left.onclick = function() {
         position = Math.min(0, position + 1);
+        positions[i] = position
         setArrowVisibility(position, arrow_left, arrow_right);
         var translate = "translate(" + (1 / 7) * 100 * position + "%)"
         movies_list.style.transform = translate;
-        console.log("left");
     }
+
+    desktop.addEventListener("change", function() {
+        console.log("change");
+        position = Math.max(-3, position);
+        positions[i] = position
+        setArrowVisibility(position, arrow_left, arrow_right);
+        var translate = "translate(" + (1 / 7) * 100 * position + "%)"
+        movies_list.style.transform = translate;
+    });
 }
 
 
@@ -66,3 +74,22 @@ function minPosition() {
     }
     return minPosition;
 }
+
+desktop.addEventListener("change", function() {
+    console.log("change");
+    for (let i = 0; i <= 3; i++) {
+
+        let arrow_left = arrows_left[i];
+        let arrow_right = arrows_right[i];
+        let movies_list = movies_lists[i];
+        let position = positions[i];
+
+        position = Math.max(-3, position);
+        positions[i] = position
+        console.log(positions)
+
+        setArrowVisibility(position, arrow_left, arrow_right);
+        var translate = "translate(" + (1 / 7) * 100 * position + "%)"
+        movies_list.style.transform = translate;
+    }
+})
